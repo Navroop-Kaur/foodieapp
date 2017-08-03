@@ -9,7 +9,19 @@ var foodieApp = angular.module('foodieApp',['ngRoute']);
 console.log(foodieApp);
 
 
-foodieApp.controller('loginController',function($scope) {
+foodieApp.controller('loginController',function($scope,$location) {
+	$scope.goToHome = function() {
+			// console.log('Do Something')
+			$location.url('home');
+		}
+
+})
+
+
+foodieApp.controller('restaurantController',function($scope,$routeParams) {
+	$scope.restaurantId = $routeParams.id;
+	var restaurants = 'Paste your restaurant Object here'
+	$scope.restaurant = restaurants[$routeParams.id - 1];
 })
 
 
@@ -52,6 +64,8 @@ foodieApp.controller('mainController',function($scope) {
 })
 
 
+
+
 foodieApp.config(function ($routeProvider) {
 	$routeProvider
 	.when('/',{
@@ -61,5 +75,9 @@ foodieApp.config(function ($routeProvider) {
 	.when('/home',{
 		templateUrl: 'pages/main.html',
 		controller: 'mainController'
+	})
+	.when('/restaurant/:id', {
+		templateUrl: 'pages/restaurant.html',
+		controller: 'restaurantController'
 	})
 })
