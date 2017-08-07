@@ -1,9 +1,9 @@
 <!-- <h3>Restaurant Info goes here</h3> -->
-<h1>Show Restaurant {{restaurantId}} details here</h1>
-<div class="restaurant">
+<!-- <h1>Show Restaurant {{restaurantId}} details here</h1> -->
+<div class="restaurant" ng-if="restaurant.name">
     <div class="rest-wrapper">
         <div class="image">
-            <img src="{{restaurant.image}}" height="100" width="100">
+            <img ng-src="{{restaurant.image}}" height="100" width="100">
         </div>
         <div class="rest-info">
             <div class="rest-category">

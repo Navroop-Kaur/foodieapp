@@ -20,14 +20,7 @@ foodieApp.controller('loginController',function($scope,$location) {
 
 foodieApp.controller('restaurantController',function($scope,$routeParams) {
 	$scope.restaurantId = $routeParams.id;
-	var restaurants = 'Paste your restaurant Object here'
-	$scope.restaurant = restaurants[$routeParams.id - 1];
-})
-
-
-
-foodieApp.controller('mainController',function($scope) {
-	$scope.restaurants = [{
+	var restaurants = [{
 	name: 'Farzi Cafe',
 	address: '38/39, Level 1, Block E , Inner Circle, Connaught Place',
 	location: 'Connaught Place',
@@ -59,6 +52,48 @@ foodieApp.controller('mainController',function($scope) {
 	cost: '2500',
 	hours: '1 Noon to 3 AM (Mon-Sun)',
 	image: 'https://www.parktheatre.co.uk/media/images/coffee-cake.jpg'
+}];
+	$scope.restaurant = restaurants[$routeParams.id - 1];
+})
+
+
+
+foodieApp.controller('mainController',function($scope) {
+	$scope.restaurants = [{
+	name: 'Farzi Cafe',
+	address: '38/39, Level 1, Block E , Inner Circle, Connaught Place',
+	location: 'Connaught Place',
+	category: 'Casual Dining, Bar',
+	vote: '4.2',
+	cuisines: 'Modern Indian',
+	cost: '2200',
+	hours: '12 Noon to 1 AM (Mon-Sun)',
+	image: 'https://b.zmtcdn.com/data/pictures/chains/2/308022/dabd30bd0b000ea859ada9a08a0132fc.jpg',
+	id:1
+},
+{
+	name: 'Priates Cafe',
+	address: '38, Level 10, Block C , South Wales,',
+	location: 'Connaught Place',
+	category: 'Bakery',
+	vote: '4.5',
+	cuisines: 'Modern Indian',
+	cost: '220',
+	hours: '10 AM to 1 PM (Mon-Sun)',
+	image: 'https://tobuz.com/wp-content/uploads/2016/12/sweet-tooth-fairy-bakery-5.jpg',
+	id:2
+},
+{
+	name: 'Lazy Panda Cafe',
+	address: '39, Level 5, Block A , City Center, Paris',
+	location: 'Connaught Place',
+	category: 'Dining, Bar , Cafe',
+	vote: '5.0',
+	cuisines: 'Modern Indian',
+	cost: '2500',
+	hours: '1 Noon to 3 AM (Mon-Sun)',
+	image: 'https://www.parktheatre.co.uk/media/images/coffee-cake.jpg',
+	id:3
 }];
 
 })
