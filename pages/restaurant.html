@@ -48,3 +48,12 @@
         <strong>{{restaurant.vote}}</strong>
     </div>
 </div>
+<div ng-if="ingredient" ng-show="flag">
+					<img class="dish_img" ng-src="{{restaurant.best_dish.image}}">
+    				<ol>
+    				<li ng-repeat="ingredient in ingredient">
+    				{{ingredient}}
+    				</li>
+    				</ol>
+				</div>
+				<div ng-if="msg" ng-show="flag" class="warning">{{msg}}</div>

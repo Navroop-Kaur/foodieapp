@@ -20,6 +20,9 @@ foodieApp.controller('loginController',function($scope,$location) {
 
 foodieApp.controller('restaurantController',function($scope,$routeParams,$http) {
 	$scope.restaurantId = $routeParams.id;
+	var nonveg_ingredients=['egg','chicken','beef','gelatin','fish',
+                                        'meat','pig','prones','crab','liver','blood',
+                                        'bones','mayonnaise','meat tikki','cake','seafood','barbecue'];
 	var restaurants = [{
 	name: 'Farzi Cafe',
 	address: '38/39, Level 1, Block E , Inner Circle, Connaught Place',
@@ -44,7 +47,11 @@ foodieApp.controller('restaurantController',function($scope,$routeParams,$http) 
 	cuisines: 'Modern Indian',
 	cost: '220',
 	hours: '10 AM to 1 PM (Mon-Sun)',
-	image: 'https://tobuz.com/wp-content/uploads/2016/12/sweet-tooth-fairy-bakery-5.jpg'
+	image: 'https://tobuz.com/wp-content/uploads/2016/12/sweet-tooth-fairy-bakery-5.jpg',
+	bestDish: {
+	name: 'Hamburger',
+	image: 'http://assets.epicurious.com/photos/57c5c6d9cf9e9ad43de2d96e/master/pass/the-ultimate-hamburger.jpg'
+}
 },
 {
 	name: 'Lazy Panda Cafe',
@@ -55,7 +62,11 @@ foodieApp.controller('restaurantController',function($scope,$routeParams,$http) 
 	cuisines: 'Modern Indian',
 	cost: '2500',
 	hours: '1 Noon to 3 AM (Mon-Sun)',
-	image: 'https://www.parktheatre.co.uk/media/images/coffee-cake.jpg'
+	image: 'https://www.parktheatre.co.uk/media/images/coffee-cake.jpg',
+	bestDish: {
+	name: 'Kathi Roll',
+	image: 'http://www.namakswadanusar.com/wp-content/uploads/2016/05/26603413574_37ee211758_k.jpg'
+}
 },
 {
 	name: 'Hot Shot',
@@ -66,7 +77,11 @@ foodieApp.controller('restaurantController',function($scope,$routeParams,$http) 
 	cuisines: 'Modern Indian',
 	cost: '2500',
 	hours: '1 Noon to 3 AM (Mon-Sun)',
-	image: 'http://del.h-cdn.co/assets/15/42/1444942234-delish-glow-food-jello-shots-recipe.jpg'
+	image: 'http://del.h-cdn.co/assets/15/42/1444942234-delish-glow-food-jello-shots-recipe.jpg',
+	bestDish: {
+	name: 'Chicken',
+	image: 'https://beautyhealthtips.in/wp-content/uploads/2016/06/Advantages-and-disadvantages-of-non-veg-food.jpg'
+}
 },
 {
 	name: 'Super Indian',
@@ -77,10 +92,18 @@ foodieApp.controller('restaurantController',function($scope,$routeParams,$http) 
 	cuisines: 'Modern Indian',
 	cost: '2500',
 	hours: '1 Noon to 3 AM (Mon-Sun)',
-	image: 'https://media.licdn.com/mpr/mpr/p/7/005/095/1a1/3f559d6.jpg'
+	image: 'https://media.licdn.com/mpr/mpr/p/7/005/095/1a1/3f559d6.jpg',
+	bestDish: {
+	name: 'Channa Bhutra',
+	image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTri-M_loFjZ03z8XayEua15YiBzbc49ca4BhDwRjSjfPKm5JbsA'
+}
 }];
 	$scope.restaurant = restaurants[$routeParams.id - 1];
+	  $scope.flag=0;
 	$scope.getIngredients = function(url) {
+		console.log(url);
+		$scope.flag=1-$scope.flag;
+            	console.log($scope.flag);
 		var data = '{"inputs":[{"data":{"image":{"url":"' + url + '"}}}]}'
 $http({
 	'method': 'POST',
@@ -93,9 +116,24 @@ $http({
 }).then(function (response) {
 			var ingredients = response.data.outputs[0].data.concepts;
 			$scope.ingredients = [];
+			    $scope.grocery_list=[];
  			for (var i =0;i < ingredients.length;i++) {
+				if(ingredients[i].value>0.75)
+	{
   				$scope.ingredients.push(ingredients[i].name);
   			}
+			}
+			for(var j=0;j<nonveg_ingredients.length;j++)
+                {
+                    var a = nonveg_ingredients.indexOf($scope.ingredient[j]);
+                    if(a>=0)
+                    {
+                        $scope.msg="This Food Item is not for vegetarians";
+                        console.log($scope.msg);
+                        break;
+                    }
+                }
+								console.log(a);
     		// $('.ingredients').html(list);
 				// console.log(list);
     		}, function (xhr) {
