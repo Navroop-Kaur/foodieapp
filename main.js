@@ -56,6 +56,28 @@ foodieApp.controller('restaurantController',function($scope,$routeParams,$http) 
 	cost: '2500',
 	hours: '1 Noon to 3 AM (Mon-Sun)',
 	image: 'https://www.parktheatre.co.uk/media/images/coffee-cake.jpg'
+},
+{
+	name: 'Hot Shot',
+	address: '39, Level 5, Block A , City Center, Paris',
+	location: 'Connaught Place',
+	category: 'Bar & Restaurant ',
+	vote: '5.0',
+	cuisines: 'Modern Indian',
+	cost: '2500',
+	hours: '1 Noon to 3 AM (Mon-Sun)',
+	image: 'http://del.h-cdn.co/assets/15/42/1444942234-delish-glow-food-jello-shots-recipe.jpg'
+},
+{
+	name: 'Super Indian',
+	address: '39, Level 5, Block A , City Center, Paris',
+	location: 'Connaught Place',
+	category: 'Dining',
+	vote: '5.0',
+	cuisines: 'Modern Indian',
+	cost: '2500',
+	hours: '1 Noon to 3 AM (Mon-Sun)',
+	image: 'https://media.licdn.com/mpr/mpr/p/7/005/095/1a1/3f559d6.jpg'
 }];
 	$scope.restaurant = restaurants[$routeParams.id - 1];
 	$scope.getIngredients = function(url) {
@@ -133,6 +155,30 @@ foodieApp.controller('mainController',function($scope) {
 	hours: '1 Noon to 3 AM (Mon-Sun)',
 	image: 'https://www.parktheatre.co.uk/media/images/coffee-cake.jpg',
 	id:3
+},
+	{
+		name: 'Hot Shot',
+		address: '39, Level 5, Block A , City Center, Paris',
+		location: 'Connaught Place',
+		category: 'Bar & Restaurant',
+		vote: '5.0',
+		cuisines: 'Modern Indian',
+		cost: '2500',
+		hours: '1 Noon to 3 AM (Mon-Sun)',
+		image: 'http://del.h-cdn.co/assets/15/42/1444942234-delish-glow-food-jello-shots-recipe.jpg',
+		id:4
+	},
+	{
+		name: 'Super Indian',
+		address: '39, Level 5, Block A , City Center, Paris',
+		location: 'Connaught Place',
+		category: 'Dining',
+		vote: '5.0',
+		cuisines: 'Modern Indian',
+		cost: '2500',
+		hours: '1 Noon to 3 AM (Mon-Sun)',
+		image: 'https://media.licdn.com/mpr/mpr/p/7/005/095/1a1/3f559d6.jpg',
+		id:5
 }];
 
 })
